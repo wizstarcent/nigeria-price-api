@@ -5,7 +5,13 @@ import pandas as pd
 import numpy as np
 
 app = FastAPI()
-model = joblib.load('nigeria_house_price_model.pkl')
+import os
+import joblib
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "nigeria_house_price_model.pkl")
+
+model = joblib.load(MODEL_PATH)
 columns = joblib.load('model_columns.pkl')
 
 class PropertyInput(BaseModel):
